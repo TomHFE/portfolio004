@@ -1,0 +1,40 @@
+body {
+  top: 0;
+  left: 0;
+  margin: 0;
+}
+.homepage-body {
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  grid-template-columns: repeat(24, 1fr);
+  grid-template-rows: repeat(24, 1fr);
+  top: 0;
+  left: 0;
+  margin: 0;
+  p {
+    // grid-column: 1/24;
+    // grid-row: 1/24;
+    font-size: 10rem;
+    color: rgba(255, 255, 255, 0);
+  }
+}
+.background {
+  position: fixed;
+  top: 0;
+  left: 0%;
+  width: 120vw;
+  height: 100%;
+  z-index: -1;
+  scroll-behavior: none;
+  overflow: hidden;
+}
+#background-mask {
+  position: fixed;
+  top: 0;
+  left: 0%;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(82, 82, 82, 0.11);
+  z-index: 0;
+}
