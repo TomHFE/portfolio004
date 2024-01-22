@@ -129,29 +129,34 @@ const Background: React.FC = () => {
 
       composer.render();
     }
-
+    // hello world
     // Handle scroll
 
     function handleScroll() {
       const scrollPosition = window.scrollY;
-      if (scrollPosition > 200) {
-        gsap.to(effect1.uniforms["progress"], {
-          value: 0.6,
-          ease: "expo.inOut",
-          duration: 3.5,
-        });
-        video.pause();
+      if (scrollPosition > 20) {
+        if (effect1.uniforms["progress"].value !== 0.6) {
+          gsap.to(effect1.uniforms["progress"], {
+            value: 0.6,
+            ease: "expo.inOut",
+            duration: 3.5,
+          });
+          video.pause();
+        }
       }
-      if (scrollPosition <= 200) {
+      if (scrollPosition <= 20) {
         video.play();
-        gsap.to(effect1.uniforms["progress"], {
-          value: 0,
-          ease: "expo.inOut",
-          duration: 3.5,
-        });
+        if (effect1.uniforms["progress"].value !== 0) {
+          gsap.to(effect1.uniforms["progress"], {
+            value: 0,
+            ease: "expo.inOut",
+            duration: 3.5,
+          });
+        }
       }
     }
-    document.addEventListener("scroll", () => {
+    document.addEventListener("scroll", (e) => {
+      console.log(e);
       handleScroll();
     });
     // Handle window resize

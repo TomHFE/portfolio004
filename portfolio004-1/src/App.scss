@@ -35,6 +35,11 @@ body {
   left: 0%;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(82, 82, 82, 0.11);
+  // background-color: rgb(232, 232, 232);
+  // background-image: url("/images/blue-transparent-three-dimensional-block-diagram-technology-background-thumbnail.jpeg");
+  background-image: url("images/paper-theme.png");
+  // background-image: url("https://www.premiumbeat.com/blog/wp-content/uploads/2022/07/25-FREE-Glass-Textures.jpg");
+  opacity: 20%;
+  background-size: cover;
   z-index: 0;
 }

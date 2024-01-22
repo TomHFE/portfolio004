@@ -61,6 +61,10 @@ const CustomPass = {
 			p += 0.1*cos(scale*3.*p.yx + time + vec2(11.2,3.4));
 			p += 0.1*cos(scale*3.3*p.yx + 1.8*-time + vec2(11.2,3.4));
 			p += 0.1*sin(scale*3.8*p.yx + 2.3*time + vec2(10.2,3.7));
+			p += 0.1*sin(scale*3.8*p.yx + 2.3*time + vec2(10.2,3.7));
+			p += 0.1*sin(scale*3.8*p.yx + 2.3*time + vec2(10.2,3.7));
+			p += 0.1*sin(scale*3.8*p.yx + 2.3*time + vec2(10.2,3.7));
+			p += 0.1*sin(scale*3.8*p.yx + 2.3*time + vec2(10.2,3.7));
 			p += 0.1*tan(scale*3.2*p.yx + 1.5*time + vec2(5.2,2.4));
 			// p += 0.1*cos(scale*4.*p.yx + 3.3*time + vec2(10.2,2.4));
 
