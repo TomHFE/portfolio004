@@ -28,6 +28,7 @@ body {
   z-index: -1;
   scroll-behavior: none;
   overflow: hidden;
+  filter: blur(0px);
 }
 #background-mask {
   position: fixed;
@@ -39,7 +40,8 @@ body {
   // background-image: url("/images/blue-transparent-three-dimensional-block-diagram-technology-background-thumbnail.jpeg");
   background-image: url("images/paper-theme.png");
   // background-image: url("https://www.premiumbeat.com/blog/wp-content/uploads/2022/07/25-FREE-Glass-Textures.jpg");
-  opacity: 20%;
+  opacity: 0%;
   background-size: cover;
   z-index: 0;
+  // background-blend-mode: color-burn;
 }

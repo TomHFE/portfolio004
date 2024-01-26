@@ -1,10 +1,10 @@
-import Title from "../background/title";
+import Banner from "./banner";
+import "./homepage.scss";
 
 export default function Homepage() {
   return (
     <div className="homepage-body">
-      <Title />
-
+      <Banner />
       <p>
         hellohellohello hellohell ohellohellohellohel lohellohel loh elloh elloh
         ellohellohellohello hellohellohellohe llohellohel l ohelloh ell ohellohe

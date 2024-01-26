@@ -155,8 +155,7 @@ const Background: React.FC = () => {
         }
       }
     }
-    document.addEventListener("scroll", (e) => {
-      console.log(e);
+    document.addEventListener("scroll", () => {
       handleScroll();
     });
     // Handle window resize

@@ -1,6 +1,7 @@
 import "./App.scss";
 import Background from "./background/background";
 import Homepage from "./homepage/homepage";
+import Projects from "./projects/projects";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       </div>
       <div id="background-mask"></div>
       <Homepage />
+      <Projects />
     </div>
   );
 }
