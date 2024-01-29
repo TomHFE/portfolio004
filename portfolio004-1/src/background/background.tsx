@@ -18,7 +18,13 @@ const Background: React.FC = () => {
     // Set up scene, camera, and renderer
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
-      75,
+      2 *
+        Math.atan(
+          window.innerWidth /
+            (window.innerWidth / window.innerHeight) /
+            (2 * 450)
+        ) *
+        (180 / Math.PI),
       window.innerWidth / window.innerHeight,
       0.1,
       1000
@@ -162,7 +168,14 @@ const Background: React.FC = () => {
     function handleResize() {
       const newWidth = window.innerWidth;
       const newHeight = window.innerHeight;
-
+      camera.fov =
+        2 *
+        Math.atan(
+          window.innerWidth /
+            (window.innerWidth / window.innerHeight) /
+            (2 * 450)
+        ) *
+        (180 / Math.PI);
       camera.aspect = newWidth / newHeight;
       camera.updateProjectionMatrix();
 
