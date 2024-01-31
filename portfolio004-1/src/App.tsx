@@ -1,11 +1,12 @@
 import "./App.scss";
+
 import Background from "./background/background";
 import Homepage from "./homepage/homepage";
 import Projects from "./projects/projects";
 
 function App() {
   return (
-    <div>
+    <div className="smooth-scroll-container">
       <div className="background">
         <Background />
       </div>
