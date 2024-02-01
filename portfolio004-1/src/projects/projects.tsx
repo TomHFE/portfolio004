@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import "./projects.scss";
 import projectData from "./project-data.tsx";
 import { useRef } from "react";
 import gsap from "gsap";
 
-import { useGSAP } from "@gsap/react";
+// import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 interface ProjectData {
@@ -22,8 +22,22 @@ export default function Projects() {
   gsap.registerPlugin(ScrollTrigger);
   const sectionRef = useRef(null);
   const triggerRef = useRef(null);
-  // const parent = document.querySelector("#scroll-section-inner");
-  // const child = gsap.utils.toArray("#scroll-section-inner section");
+  const [timer, setTimer] = useState<boolean>(false);
+
+  const container = document.querySelector(".scroll-section-inner");
+  const sections = gsap.utils.toArray(".prj");
+  const texts = gsap.utils.toArray(".prj-main-body");
+
+  useEffect(() => {
+    // Set up the timer when the component mounts
+    const timerId = setTimeout(() => {
+      // Code to be executed after one second
+      setTimer(true);
+    }, 1000);
+
+    // Clean up the timer when the component unmounts
+    return () => clearTimeout(timerId);
+  }, []);
 
   const cycledData: ProjectData[] = projectData.sort((a, b) => {
     if (a.id < b.id) {
@@ -37,146 +51,80 @@ export default function Projects() {
     return 0;
   });
 
-  const xValue = cycledData[0].id * 100 + 100;
+  const xValue = cycledData[0].id * 100;
 
-  // useGSAP(() => {
-  // if (parent instanceof HTMLElement) {
-  //   const tl = gsap.timeline({
-  //     defaults: {
-  //       ease: "none",
-  //     },
-  //     scrollTrigger: {
-  //       trigger: parent,
-  //       pin: true,
-  //       // scrub: 2,
-  //       end: "+=" + xValue * 40, //speed of scroll
-  //     },
-  //   });
-  //   tl.to(parent, {
-  //     translateX: `-${xValue}vw`,
-  //   });
-
-  // child.forEach((elem, i) => {
-  //   // @ts-ignore
-  //   const prjElement: HTMLElement | null = elem.querySelector(".prj");
-
-  //   if (prjElement) {
-  //     const tl = gsap.timeline();
-  //     tl.from(prjElement, {
-  //       y: -50,
-  //       opacity: 0,
-  //       scrollTrigger: {
-  //         trigger: prjElement,
-  //         start: "left center",
-  //         end: "center center",
-  //         containerAnimation: tl,
-  //         scrub: true,
-  //         markers: true,
-  //       },
-  //     });
-  //   }
-  // });
-  //   }
-  // }, []);
-
-  console.log(triggerRef.current);
-
-  useGSAP(() => {
-    const pin = gsap.fromTo(
-      sectionRef.current,
-      {
-        translateX: 0,
-      },
-      {
-        translateX: `-${xValue}vw`,
-        ease: "easeInOut",
-        // duration: 10,
-
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top ",
-          // end: `bottom top`,
-          // markers: true,
-          scrub: 0.1,
-          pin: true,
-          anticipatePin: 3,
-          end: "+=" + xValue * 40, //speed of scroll
-          // end: () =>
-          //   "+=" + document.querySelector("#scroll-section-inner")?.offsetWidth,
+  useLayoutEffect(() => {
+    if (timer) {
+      const pin = gsap.fromTo(
+        sectionRef.current,
+        {
+          translateX: 0,
         },
-      }
-    );
-    return () => {
-      pin.kill();
-    };
-  }, []);
+        {
+          translateX: `-${xValue}vw`,
+          ease: "none",
+          // duration: 10,
 
-  //   console.log(triggerRef.current);
-  //   if (triggerRef.current) {
-  //     const sections = gsap.utils.toArray<HTMLDivElement>(".prj");
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            // start: "top top ",
+            // end: `bottom top`,
+            // markers: true,
+            scrub: 0.1,
+            pin: true,
+            anticipatePin: 3,
+            end: "+=" + xValue * 15, //speed of scroll
+            // end: () =>
+            //   "+=" + document.querySelector("#scroll-section-inner")?.offsetWidth,
+          },
+        }
+      );
+      sections.forEach((section) => {
+        // grab the scoped text
+        const body = section.querySelectorAll<HTMLElement>(".body");
+        const anim1 = section.querySelectorAll<HTMLElement>(".anim-1 ");
 
-  //     sections.forEach((elem, i) => {
-  //       const anim = gsap.fromTo(
-  //         elem,
-  //         {
-  //           x: -50,
-  //           opacity: 0,
-  //         },
-  //         {
-  //           x: 0,
-  //           opacity: 1,
+        // const border =
+        //   section.querySelectorAll<HTMLElement>(".prj-main-border");
 
-  //           scrollTrigger: {
-  //             trigger: sections,
-  //             start: "left left", // Adjust start property
-  //             end: "left right",
-  //             horizontal: true,
+        // bump out if there's no items to animate
+        if (body.length === 0) return;
 
-  //             // end: `bottom bottom`,
-  //             containerAnimation: pin,
+        gsap.from(body, {
+          x: 130,
+          opacity: 0,
+          duration: 0.5,
+          ease: "linear",
+          // stagger: 0.1,
+          scrollTrigger: {
+            trigger: section,
+            containerAnimation: pin,
+            start: "left center",
+            markers: true,
+          },
+        });
 
-  //             markers: true,
-  //             scrub: 0.9,
-  //             pin: true,
-  //             // end: "+=" + xValue * 40, //speed of scroll
-  //           },
-  //         }
-  //       );
-  //     });
-  //   }
-  //   // const sections: NodeListOf<HTMLElement> = document.querySelectorAll(".prj");
+        // do a little stagger
+        gsap.from(anim1, {
+          x: 130,
+          opacity: 0,
+          duration: 1,
+          ease: "ease",
+          stagger: 0.1,
+          scrollTrigger: {
+            trigger: section,
+            containerAnimation: pin,
+            start: "left center",
+            markers: true,
+          },
+        });
+      });
 
-  //   // sections.forEach((stop, i) => {
-  //   //   tl.fromTo(
-  //   //     stop.querySelector(".prj-main-body"),
-  //   //     {
-  //   //       yPercent: -50,
-  //   //       opacity: 0,
-  //   //     },
-  //   //     {
-  //   //       yPercent: 0,
-  //   //       opacity: 1,
-  //   //       duration: 1,
-  //   //       ease: "linear",
-  //   //       scrollTrigger: {
-  //   //         trigger: stop,
-  //   //         start: "left left",
-  //   //         end: "right right",
-  //   //         // containerAnimation: tl,
-  //   //         scrub: true,
-  //   //         markers: true,
-  //   //       },
-  //   //     }
-  //   //   );
-  //   // });
-
-  //   return () => {
-  //     {
-  //       /* A return function for killing the animation on component unmount */
-  //     }
-  //     pin.kill();
-  //   };
-  // }, []);
+      return () => {
+        pin.kill();
+      };
+    }
+  }, [timer]);
 
   return (
     <div id="scroll-section-outer">
@@ -187,66 +135,45 @@ export default function Projects() {
             id="scroll-section-inner"
             style={{ width: `${+cycledData[0].id * 100 + 100}vw` }}
           >
-            <div id="project-start"></div>
+            {/* <div id="project-start"></div> */}
             {cycledData.map((project) => (
-              <div ref={triggerRef} key={project.number}>
-                <section className="prj" key={project.number}>
-                  <img
-                    className="prj-main-body"
-                    src="/images/project-images/project-main-body.png"
-                  />
-                  <img
-                    className="prj-second-body"
-                    src="/images/project-images/secondary-menu-body.png"
-                  />
-                  <img
-                    className="prj-menu-button"
-                    src="/images/project-images/menu-project-section.png"
-                  />
-                  <img
-                    className="prj-build-button"
-                    src="/images/project-images/build-project-section.png "
-                  />
-                  <img
-                    className="prj-back-to-top-button"
-                    src="/images/project-images/back-to-top-project-section.png "
-                  />
-                  {/* <div className="prj-view"> */}
-                  {/* <img
-              className="prj-view"
-              src="/images/project-images/view-button-project.png"
-            /> */}
-                  <h3 className="prj-view-title">VIEW SITE</h3>
-                  {/* </div> */}
-                  {/* <img
-              className="prj-forward-button"
-              src="/images/project-images/forward-project-button.png"
-            />
-            <img
-              className="prj-backward-button"
-              src="/images/project-images/back-project-button.png"
-            /> */}
-                  <h3 className="menu">MENU</h3>
-                  <h3 className="build">BUILD</h3>
-                  <h3 className="start">BACK TO START</h3>
-                  <h1 className="title">{project.name.toUpperCase()}</h1>
-                  <div className="horizontal-line title-line"></div>
-                  <img className="image-section" src={project.img[0]} />
-                  <div className="proj-specs">
-                    {project.specs.map((spec, i) => (
-                      <span key={i} id="spec">
-                        {spec}{" "}
-                      </span>
-                    ))}
-                  </div>
-                  <div id="spec-title">SPECS</div>
-                  <div className="horizontal-line " id="spec-line"></div>
-                  <div id="info">BRIEF</div>
-                  <div className="number">
-                    {project.id}/{cycledData[0].id}
-                  </div>
-                </section>
-              </div>
+              <section className="prj" key={project.number} ref={triggerRef}>
+                <div className="prj-main-body body" />
+                <img
+                  className="prj-main-border body"
+                  src="/images/border.png"
+                ></img>
+                <p className="info anim-1">{project.info}</p>
+
+                <h3 className="prj-view-title anim-1">view site</h3>
+                <h3 className="menu anim-1">
+                  <span>
+                    <img
+                      src="/images/menu-cross.png"
+                      className="cross anim-1"
+                      alt="cross"
+                    />
+                  </span>
+                  menu
+                </h3>
+                <h3 className="start anim-1">start over</h3>
+                <h1 className="title anim-1">{project.name}</h1>
+                <div className="horizontal-line title-line anim-1"></div>
+                <img className="image-section anim-1" src={project.img[0]} />
+                <div className="proj-specs">
+                  {project.specs.map((spec, i) => (
+                    <span key={i} id="spec">
+                      {spec}{" "}
+                    </span>
+                  ))}
+                </div>
+                <div id="spec-title anim-1">Specs</div>
+                <div className="horizontal-line anim-1 " id="spec-line"></div>
+                <div className="number anim-1">
+                  {project.id}/{cycledData[0].id}
+                </div>
+              </section>
+              // </div>
             ))}
           </div>
         </div>{" "}
