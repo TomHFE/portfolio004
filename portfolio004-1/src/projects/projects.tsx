@@ -3,6 +3,7 @@ import "./projects.scss";
 import projectData from "./project-data.tsx";
 import { useRef } from "react";
 import gsap from "gsap";
+import hoverEffect from "hover-effect";
 
 // import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -22,11 +23,10 @@ export default function Projects() {
   gsap.registerPlugin(ScrollTrigger);
   const sectionRef = useRef(null);
   const triggerRef = useRef(null);
+  const imageRef = useRef(null);
   const [timer, setTimer] = useState<boolean>(false);
 
-  const container = document.querySelector(".scroll-section-inner");
   const sections = gsap.utils.toArray(".prj");
-  const texts = gsap.utils.toArray(".prj-main-body");
 
   useEffect(() => {
     // Set up the timer when the component mounts
@@ -83,6 +83,7 @@ export default function Projects() {
         // grab the scoped text
         const body = section.querySelectorAll<HTMLElement>(".body");
         const anim1 = section.querySelectorAll<HTMLElement>(".anim-1 ");
+        const anim2 = section.querySelectorAll<HTMLElement>(".anim-2 ");
 
         // const border =
         //   section.querySelectorAll<HTMLElement>(".prj-main-border");
@@ -106,11 +107,25 @@ export default function Projects() {
 
         // do a little stagger
         gsap.from(anim1, {
-          x: 130,
+          x: 30,
           opacity: 0,
           duration: 1,
           ease: "ease",
           stagger: 0.1,
+          scrollTrigger: {
+            trigger: section,
+            containerAnimation: pin,
+            start: "left center",
+            markers: true,
+          },
+        });
+
+        gsap.from(anim2, {
+          x: 30,
+          opacity: 0,
+          duration: 2,
+          ease: "ease",
+          stagger: 0.2,
           scrollTrigger: {
             trigger: section,
             containerAnimation: pin,
@@ -126,6 +141,19 @@ export default function Projects() {
     }
   }, [timer]);
 
+  console.log(cycledData[0].img[0]);
+
+  useEffect(() => {
+    new hoverEffect({
+      parent: document.querySelector(".image-section"),
+      intensity: 0.3,
+      hover: true,
+      image1: cycledData[0].img[0],
+      image2: cycledData[0].img[1],
+      displacementImage: "/images/paper-theme.png",
+    });
+  }, [cycledData[0].img[0], cycledData[0].img[1], "/images/paper-theme.png"]);
+
   return (
     <div id="scroll-section-outer">
       <div className="project-section">
@@ -135,7 +163,7 @@ export default function Projects() {
             id="scroll-section-inner"
             style={{ width: `${+cycledData[0].id * 100 + 100}vw` }}
           >
-            {/* <div id="project-start"></div> */}
+            <div id="project-start"></div>
             {cycledData.map((project) => (
               <section className="prj" key={project.number} ref={triggerRef}>
                 <div className="prj-main-body body" />
@@ -158,17 +186,22 @@ export default function Projects() {
                 </h3>
                 <h3 className="start anim-1">start over</h3>
                 <h1 className="title anim-1">{project.name}</h1>
-                <div className="horizontal-line title-line anim-1"></div>
-                <img className="image-section anim-1" src={project.img[0]} />
+                <div className="horizontal-line title-line body"></div>
+                <div
+                  ref={imageRef.current}
+                  className="image-section body"
+                ></div>
                 <div className="proj-specs">
                   {project.specs.map((spec, i) => (
-                    <span key={i} id="spec">
+                    <span key={i} id="spec" className="anim-2">
                       {spec}{" "}
                     </span>
                   ))}
                 </div>
-                <div id="spec-title anim-1">Specs</div>
-                <div className="horizontal-line anim-1 " id="spec-line"></div>
+                <div id="spec-title" className="anim-2">
+                  Specs
+                </div>
+                <div className="horizontal-line body " id="spec-line"></div>
                 <div className="number anim-1">
                   {project.id}/{cycledData[0].id}
                 </div>

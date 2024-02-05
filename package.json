@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "gsap": "^3.12.4",
+    "hover-effect": "^1.2.1",
     "locomotive-scroll": "^4.1.4",
     "sass": "^1.69.7",
     "three": "^0.160.0"

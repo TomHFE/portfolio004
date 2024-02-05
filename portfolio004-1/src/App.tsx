@@ -9,6 +9,7 @@ function App() {
     <div className="smooth-scroll-container">
       <div className="background">
         <Background />
+        <div className="background-mask"></div>
       </div>
       <div id="background-mask"></div>
       <Homepage />

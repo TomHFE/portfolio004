@@ -45,6 +45,7 @@ const Background: React.FC = () => {
     // Create a video element
     const video = document.createElement("video");
     video.src = "/videos/glass.mp4"; // Adjust the path based on your project structure
+    // video.src = "/videos/jelly-1.mp4";
     video.loop = true;
     video.muted = true; // Ensure video is muted to autoplay on some browsers
     video.play();
@@ -141,22 +142,22 @@ const Background: React.FC = () => {
     function handleScroll() {
       const scrollPosition = window.scrollY;
       if (scrollPosition > 20) {
-        if (effect1.uniforms["progress"].value !== 0.6) {
-          gsap.to(effect1.uniforms["progress"], {
-            value: 0.6,
-            ease: "expo.inOut",
-            duration: 3.5,
-          });
-          video.pause();
-        }
-      }
-      if (scrollPosition <= 20) {
-        video.play();
         if (effect1.uniforms["progress"].value !== 0) {
           gsap.to(effect1.uniforms["progress"], {
             value: 0,
             ease: "expo.inOut",
-            duration: 3.5,
+            duration: 1.5,
+          });
+          video.play();
+        }
+      }
+      if (scrollPosition <= 20) {
+        video.pause();
+        if (effect1.uniforms["progress"].value !== 0.6) {
+          gsap.to(effect1.uniforms["progress"], {
+            value: 0.6,
+            ease: "expo.inOut",
+            duration: 1.5,
           });
         }
       }
