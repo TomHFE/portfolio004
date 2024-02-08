@@ -2,7 +2,7 @@ html,
 body {
   width: 100%;
   min-height: 100%;
-
+  overflow-x: hidden;
   top: 0;
   left: 0;
   margin: 0;
@@ -40,14 +40,14 @@ body {
   scroll-behavior: none;
   overflow: hidden;
 }
-#background-mask {
+.background-mask {
   position: fixed;
   top: 0;
   left: 0%;
   width: 100vw;
   height: 100vh;
-  background-color: hsla(227, 64%, 13%, 0.105);
-  backdrop-filter: blur(1px);
+  // background-color: hsla(66, 23%, 25%, 0.208);
+  backdrop-filter: blur(0px);
   // background-image: url("/images/blue-transparent-three-dimensional-block-diagram-technology-background-thumbnail.jpeg");
   // background-image: url("images/paper-theme.png");
   // background-image: url("https://www.premiumbeat.com/blog/wp-content/uploads/2022/07/25-FREE-Glass-Textures.jpg");
@@ -56,3 +56,7 @@ body {
   z-index: 0;
   // background-blend-mode: color-burn;
 }
+// .about {
+//   width: 100vw;
+//   height: 100vh;
+// }

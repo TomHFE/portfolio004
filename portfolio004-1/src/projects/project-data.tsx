@@ -59,7 +59,7 @@ const P2 = new Project(
   "CSS CV",
   "Heres an example I made of my understanding of CSS and grid more specifically. This online CV was built with React and has the various components of a CV built through nested Grid layouts.",
   [
-    "/images/project-images/images-portfolio/img-7.jpg",
+    "/images/project-images/images-portfolio/brut-flat.png",
     "/images/project-images/images-portfolio/img-8.jpg",
   ],
   ["React", "Javascript", "CSS", "HTML"],
@@ -115,7 +115,7 @@ const P6 = new Project(
   "My Website",
   "My New site uses Three Js to build a background image this image is then manipulated using GLSL shader language to manipulate it creating the effect shown. This website also uses typescript, sass for styling and GSAP for animations along with Vite as the framework.",
   [
-    "/images/project-images/images-portfolio/brut-flat.png",
+    "/images/project-images/images-portfolio/img-7.jpg",
     "/images/project-images/images-portfolio/img-13.jpg",
   ],
   [
