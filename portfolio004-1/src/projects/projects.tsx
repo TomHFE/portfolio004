@@ -6,8 +6,11 @@ import gsap from "gsap";
 // import hoverEffect from "hover-effect";
 // import { ProjectShader } from "./project-shader.tsx";
 import Homepage from "../homepage/homepage";
+import { useNavigate } from "react-router-dom";
 
 // import { useGSAP } from "@gsap/react";
+import { Observer } from "gsap/dist/Observer";
+
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
@@ -28,6 +31,9 @@ interface Props {
 
 export default function Projects({ isAnim, handleIsAnim }: Props) {
   gsap.registerPlugin(ScrollTrigger);
+
+  gsap.registerPlugin(Observer);
+
   const sectionRef = useRef(null);
   const triggerRef = useRef(null);
   const imageRef = useRef(null);
@@ -36,11 +42,16 @@ export default function Projects({ isAnim, handleIsAnim }: Props) {
   const [animate, setAnimate] = useState<boolean>(false);
   const [trans, setTrans] = useState<boolean>(false);
   const [timer, setTimer] = useState<boolean>(false);
+  const [link, setLink] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   const sections = gsap.utils.toArray(".prj");
 
   const handleClick = () => {
     setClicked(true);
+  };
+  const handleView = () => {
+    navigate("/about");
   };
 
   useEffect(() => {
@@ -57,7 +68,7 @@ export default function Projects({ isAnim, handleIsAnim }: Props) {
         handleIsAnim();
         console.log(isAnim);
         setTimer(true);
-      }, 3000);
+      }, 2600);
 
       // Clean up the timer when the component unmounts
       return () => {
@@ -90,7 +101,7 @@ export default function Projects({ isAnim, handleIsAnim }: Props) {
     if (trans) {
       gsap.to("#home", {
         display: "none",
-        duration: 1,
+        duration: 2,
         ease: "expo.inOut",
       });
     }
@@ -175,12 +186,13 @@ export default function Projects({ isAnim, handleIsAnim }: Props) {
           },
         });
       });
-      Observer.create({
-        target: "#project-last", // can be any element (selector text is fine)
-        type: "wheel,touch", // comma-delimited list of what to listen for ("wheel,touch,scroll,pointer")
-        onUp: () => previous(),
-        onDown: () => next(),
-      });
+
+      // Observer.create({
+      //   target: "#project-last", // can be any element (selector text is fine)
+      //   type: "wheel,touch", // comma-delimited list of what to listen for ("wheel,touch,scroll,pointer")
+      //   onUp: () => handleView(),
+      //   onDown: () => handleView(),
+      // });
 
       // gsap.fromTo(
       //   "#project-start",
@@ -245,7 +257,7 @@ export default function Projects({ isAnim, handleIsAnim }: Props) {
                   ></img>
                   <p className="info anim-1">{project.info}</p>
 
-                  <h3 className="prj-view-title anim-1">
+                  <h3 className="prj-view-title anim-1" id="view-site">
                     <span>
                       <img
                         src="/images/menu-cross.png"
@@ -255,7 +267,6 @@ export default function Projects({ isAnim, handleIsAnim }: Props) {
                       view site
                     </span>
                   </h3>
-                  <h3 className="start anim-1">start over</h3>
                   <h1 className="title anim-1" id="stroke">
                     {project.name}
                   </h1>
@@ -291,7 +302,13 @@ export default function Projects({ isAnim, handleIsAnim }: Props) {
                 // </div>
               ))}
               {/* {/* <div id="project-start"></div> */}
-              <div id="project-last"></div>
+              <div id="project-last">
+                {" "}
+                <h4 id="next" onClick={handleView}>
+                  {" "}
+                  next &#8652;
+                </h4>
+              </div>
             </div>
           </div>{" "}
         </div>

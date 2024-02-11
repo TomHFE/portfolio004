@@ -1,13 +1,15 @@
 .about-body {
-  height: 200vh;
+  height: 100vh;
   width: 100vw;
-  background: linear-gradient(to top, white 80%, rgba(255, 255, 255, 0) 99.9%);
-  // backdrop-filter: blur(150px);
+  background-color: white; // backdrop-filter: blur(150px);
+  opacity: 0;
   z-index: 2;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  // height: 100%;
+  // overflow: hidden;
 
   #about-photo {
     width: 20%;
@@ -30,5 +32,12 @@
     opacity: 0;
     transform: translateY(-5px);
     transition: transform 0.1s;
+  }
+  .scroll {
+    position: fixed;
+    top: 0;
+    left: 46%;
+    z-index: 3;
+    width: 100%;
   }
 }

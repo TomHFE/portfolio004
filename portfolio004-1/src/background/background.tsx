@@ -126,7 +126,7 @@ const Background = ({ isAnim }: Props) => {
         gsap.to(effect1.uniforms["progress"], {
           value: 0.6,
           ease: "expo.inOut",
-          duration: 1,
+          duration: 4,
         });
       }
     };

@@ -70,24 +70,19 @@ h1 {
 
 @media (max-width: 480px) {
   .banner {
-    width: 100vw;
-    height: 100vh;
-    background-color: #ffffff00;
-    backdrop-filter: blur(0px);
     display: grid;
     grid-template-columns: repeat(20, 1fr);
     grid-template-rows: repeat(20, 1fr);
   }
   h1 {
     font-size: 60px;
-    // grid-row: 1/13;
-    // grid-column: 1/21;
+    grid-column: 1/21;
+    text-align: center;
   }
   .time {
-    color: rgb(255, 255, 255);
-    grid-column: 1/12;
+    grid-column: 5/21;
     margin: 10px;
-    grid-column: 10/21;
+    grid-row: 1;
     text-align: right;
   }
   .portfolio-004 {
@@ -100,10 +95,10 @@ h1 {
   }
   .first {
     grid-column: 1/21;
-    grid-row: 4;
+    grid-row: 1;
   }
   .second {
     grid-column: 1/21;
-    grid-row: 16;
+    grid-row: 19;
   }
 }

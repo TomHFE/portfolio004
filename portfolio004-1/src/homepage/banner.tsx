@@ -54,7 +54,7 @@ export default function Banner({ animate }: Props) {
         {
           fontSize: "20px",
           // opacity: 0,
-          duration: 1,
+          duration: 1.5,
 
           ease: "expo.inOut",
         },
@@ -64,7 +64,7 @@ export default function Banner({ animate }: Props) {
         "#banner",
         {
           opacity: 0,
-          duration: 1,
+          duration: 1.5,
 
           ease: "expo.inOut",
         },

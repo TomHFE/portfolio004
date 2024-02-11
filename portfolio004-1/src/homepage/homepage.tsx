@@ -1,15 +1,12 @@
 import Banner from "./banner";
 import "./homepage.scss";
-import gsap from "gsap";
 interface Props {
-  animate: boolean
+  animate: boolean;
 }
-export default function Homepage({animate} : Props) {
-
-
+export default function Homepage({ animate }: Props) {
   return (
     <div className="homepage-body">
-      <Banner  animate={animate} />
+      <Banner animate={animate} />
     </div>
   );
 }

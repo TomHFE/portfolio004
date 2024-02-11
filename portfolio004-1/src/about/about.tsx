@@ -5,20 +5,36 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import "./about.scss";
 import SplitType from "split-type";
+import { useNavigate } from "react-router-dom";
 
 const About: React.FC = () => {
   const pictureRef = useRef(null);
   const bioRef = useRef(null);
+  const lockRef = useRef(null);
+  const navigate = useNavigate();
 
   const { ref, inView } = useInView({
     /* Optional options */
     threshold: 0.5,
   });
+
+  const handleView = () => {
+    navigate("/");
+  };
+
+  // sort out preventing it from locking
+
   useGSAP(() => {
     if (bioRef.current && pictureRef.current) {
       const split = new SplitType(bioRef.current);
       if (split.lines) {
         if (inView) {
+          gsap.to(".about-body", {
+            opacity: 1,
+            overflow: "scroll",
+            duration: 0.2,
+            ease: "ease",
+          });
           gsap.to(pictureRef.current, {
             opacity: 1,
             y: 0,
@@ -52,8 +68,11 @@ const About: React.FC = () => {
   }, [inView]);
 
   return (
-    <div className="" ref={ref}>
-      <div className="about-body">
+    <div className="test" ref={ref}>
+      <div className="about-body" ref={lockRef}>
+        <h3 className="scroll" onClick={handleView}>
+          Start <span id="arrow">&#8657;</span>
+        </h3>
         <img
           src="/images/profile-p-large.jpeg"
           alt="about photo"

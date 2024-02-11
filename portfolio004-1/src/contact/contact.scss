@@ -19,6 +19,7 @@
       font-family: "Audiowide", sans-serif;
       text-align: center;
       font-size: 30px;
+      color: white;
     }
     #contacts {
       display: flex;
@@ -41,6 +42,25 @@
       a:hover {
         border: 1px rgb(255, 255, 255) solid;
       }
+    }
+    @media (max-width: 480px) {
+      #contacts {
+        margin: 0 -200px 0 -200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .section {
+        padding: 10vw;
+      }
+    }
+  }
+}
+@media (max-width: 480px) {
+  .contact-body {
+    height: 100vh;
+    .contact-container {
     }
   }
 }

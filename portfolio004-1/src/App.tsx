@@ -5,6 +5,8 @@ import Homepage from "./homepage/homepage";
 import Projects from "./projects/projects";
 import About from "./about/about";
 import Contact from "./contact/contact";
+import AboutSection from "./about-section/about-section";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   // const targetRef = useRef<HTMLDivElement>(null);
@@ -55,12 +57,15 @@ function App() {
         <Background isAnim={isAnimated} />
         {/* <div className="background-mask"></div> */}
       </div>
-
       {/* <div id="background-mask"></div> */}
       {/* <Homepage /> */}
-      <Projects isAnim={isAnimated} handleIsAnim={handleIsAnim} />
-      {/* <About />
-      <Contact /> */}
+      <Routes>
+        <Route
+          path="/"
+          element={<Projects isAnim={isAnimated} handleIsAnim={handleIsAnim} />}
+        ></Route>
+        <Route path="/about" element={<AboutSection />}></Route>
+      </Routes>
     </div>
   );
 }

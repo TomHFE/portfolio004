@@ -33,11 +33,11 @@ export default function Contact() {
   // >
   return (
     <div className="contact-body">
-      <div className="contact-container">
+      <div className="contact-container" id="contact-container">
         <h1>CONTACT</h1>
         <div id="contacts">
           {contactOptions.map((contact, i) => (
-            <div key={contact.name + i}>
+            <div key={contact.name + i} className="section">
               <a rel="noopener noreferrer" target="_blank" href={contact.link}>
                 {contact.name}
               </a>
