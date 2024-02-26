@@ -212,7 +212,7 @@ export default function Projects({ handleIsAnim }: Props) {
       <div id="home">
         {/* start button */}
         <div id="press-start-container" onClick={handleClick}>
-          <div id="press-start">Press to Start</div>
+          <div id="press-start"> Start</div>
         </div>
         <Homepage animate={animate} />
       </div>

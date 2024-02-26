@@ -89,10 +89,13 @@ h1 {
   }
   // time elements
   .time {
-    grid-column: 5/21;
+    grid-column: 1/21;
     margin: 10px;
-    grid-row: 1;
-    text-align: right;
+    grid-row: 12;
+    text-align: center;
+    font-weight: 100;
+    font-size: 13.5px;
+    color: rgba(98, 98, 98, 0.421);
   }
   // header elements
   .portfolio-004 {
@@ -101,14 +104,14 @@ h1 {
     margin: 10px;
     display: none;
   }
-// first line
+  // first line
   .first {
     grid-column: 1/21;
-    grid-row: 1;
+    grid-row: 4;
   }
   // second line
   .second {
     grid-column: 1/21;
-    grid-row: 19;
+    grid-row: 16;
   }
 }
