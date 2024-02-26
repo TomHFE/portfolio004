@@ -1,16 +1,37 @@
 {
+  "name": "portfolio004-1",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
   "dependencies": {
-    "@react-aria/overlays": "^3.20.0",
-    "body-scroll-lock": "^4.0.0-beta.0",
-    "gsap": "^3.12.4",
-    "hover-effect": "^1.2.1",
-    "locomotive-scroll": "^4.1.4",
-    "react-router-dom": "^6.22.0",
-    "sass": "^1.69.7",
-    "three": "^0.160.0"
+    "@gsap/react": "^2.1.0",
+    "@studio-freight/react-lenis": "^0.0.43",
+    "gsap": "^3.12.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-intersection-observer": "^9.5.3",
+    "react-router-dom": "^6.22.1",
+    "split-type": "^0.3.4",
+    "three": "^0.160.1"
   },
   "devDependencies": {
-    "@types/body-scroll-lock": "^3.1.2",
-    "@types/three": "^0.160.0"
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@types/three": "^0.160.0",
+    "@typescript-eslint/eslint-plugin": "^6.14.0",
+    "@typescript-eslint/parser": "^6.14.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.55.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "sass": "^1.69.7",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8"
   }
 }
