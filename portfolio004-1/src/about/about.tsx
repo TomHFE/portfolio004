@@ -8,57 +8,66 @@ import SplitType from "split-type";
 import { useNavigate } from "react-router-dom";
 
 const About: React.FC = () => {
+  // refs
   const pictureRef = useRef(null);
   const bioRef = useRef(null);
   const lockRef = useRef(null);
+  // navigate hook
   const navigate = useNavigate();
 
+// inview ref
+
   const { ref, inView } = useInView({
-    /* Optional options */
     threshold: 0.5,
   });
 
+  // navigation button
   const handleView = () => {
     navigate("/");
   };
 
-  // sort out preventing it from locking
-
+// animation on show
   useGSAP(() => {
     if (bioRef.current && pictureRef.current) {
       const split = new SplitType(bioRef.current);
       if (split.lines) {
         if (inView) {
+          // body
           gsap.to(".about-body", {
             opacity: 1,
             overflow: "scroll",
             duration: 0.2,
             ease: "ease",
           });
+          // picture
           gsap.to(pictureRef.current, {
             opacity: 1,
             y: 0,
             duration: 1,
             ease: "ease",
           });
+          // line
           gsap.to(".line", {
             y: 0,
             opacity: 1,
-            duration: 1,
+            duration: 2,
             ease: "ease",
             stagger: 0.15,
           });
         } else {
+          // when not in view
+          // picture
           gsap.to(pictureRef.current, {
             opacity: 0,
             y: -50,
             duration: 1,
             ease: "ease",
           });
+          // line
           gsap.to(".line", {
             opacity: 0,
             y: -2,
-            duration: 1,
+            duration: 2,
             ease: "ease",
             stagger: 0.15,
           });
@@ -73,6 +82,7 @@ const About: React.FC = () => {
         <h3 className="scroll" onClick={handleView}>
           Start <span id="arrow">&#8657;</span>
         </h3>
+        <h1 id="title">About</h1>
         <img
           src="/images/profile-p-large.jpeg"
           alt="about photo"

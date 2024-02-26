@@ -1,29 +1,34 @@
 @import url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
 
+// home element
 #home {
   position: absolute;
 }
-
+// a elements
+a {
+  text-decoration: none;
+}
+// a hover elements
+a:hover {
+  color: #ffffff3c;
+}
+// scroll locking for slider
 #scroll-section-outer {
   overflow-x: hidden;
   position: relative;
   display: none;
-  // background: linear-gradient(
-  //   to right,
-  //   rgb(0, 0, 0),
-  //   white 80%
-  // ); /* Change the linear gradient on hover to fully white */
 }
+// inner container
 #scroll-section-inner {
   height: 100vh;
-  // width: 500vw;
   display: flex;
   flex-wrap: nowrap;
 }
+// start button for homepage transition
 #press-start {
   top: 70%;
-  left: 40.3%;
-  right: 46.3%;
+  left: 0%;
+  right: 0%;
   bottom: 30%;
   text-align: center;
   margin: auto;
@@ -32,13 +37,17 @@
   justify-items: center;
   align-items: center;
   z-index: 4;
+  font-size: 1.3vw;
   border: 1px black solid;
   border-radius: 30px;
   padding: 1.5rem;
+  margin: 0 45vw 0 45vw;
 }
+// start el hover
 #press-start:hover {
   border: 1px rgb(255, 255, 255) solid;
 }
+// project start section
 #project-start {
   width: 100vw;
   height: 100vh;
@@ -48,21 +57,17 @@
   align-items: center;
   font-size: 40px;
 }
+// section for project start
 #section-start {
-  // backdrop-filter: blur(30px);
-  // background-color: #ffffff2f;
-  // // border: 1px black solid;
   padding-left: 6vw;
-  // border-radius: 100%;
-
   font-family: "Audiowide", sans-serif;
   text-align: right;
-
   color: rgba(255, 255, 255, 0.655);
   font-size: 6vh;
   opacity: 0;
   text-align: center;
 }
+// last section
 #project-last {
   width: 20vw;
   height: 100vh;
@@ -73,41 +78,45 @@
   justify-content: center;
   align-items: center;
 }
+// next container
 #next {
   font-size: 50px;
   margin-right: 10vw;
 }
+// next hover
 #next:hover {
   color: black;
 }
+// projects sections
 .prj {
   height: 100vh;
   width: 100vw;
   display: grid;
   grid-template-columns: repeat(39, 1fr);
   grid-template-rows: repeat(23, 1fr);
-
+  // animation identifiers
   .anim-1,
   .anim-2,
   .specs {
     z-index: 4;
   }
+  // h3 elements
   h3 {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 2em;
   }
+  // main body
   .prj-main-body {
     grid-row: 3/22;
     grid-column: 11/30;
     height: 100%;
     width: 100%;
     background-color: #00445238;
-    // background-color: #0491ad38;
-
     backdrop-filter: blur(30px);
     border-radius: 30px;
     z-index: 1;
   }
+  // border
   .prj-main-border {
     grid-row: 3/22;
     grid-column: 11/30;
@@ -115,7 +124,7 @@
     width: 100%;
     z-index: 4;
   }
-
+  // view button
   .prj-view-title {
     color: white;
     grid-row: 4/6;
@@ -125,19 +134,18 @@
     font-weight: 100;
     font-size: 1.5vw;
     z-index: 4;
-
+    // cross
     .cross {
       height: 20%;
       width: auto;
       top: 0%;
       left: 0%;
       margin: auto;
-      padding-right: 0.2vw;
+      padding-right: -0.4vw;
     }
   }
-
+// info
   .info {
-    // in use
     grid-row: 13/20;
     grid-column: 21/29;
     color: white;
@@ -149,35 +157,28 @@
     justify-content: end;
     align-items: flex-end;
   }
+  // title
   .title {
-    // in use
     grid-row: 13/17;
-    grid-column: 21/29;
+    grid-column: 18/29;
     font-size: 2.5em;
     color: white;
-    display: flex;
-    justify-content: start;
-    align-items: flex-start;
-    margin: -1vw 0vw 0 1.5vw;
+    margin: 0vw 0vw 0 0vw;
     font-weight: 200;
     z-index: 3;
     text-align: right;
     text-transform: capitalize;
     font-family: Arial, Helvetica, sans-serif;
   }
+  // horizontal line
   .horizontal-line {
-    // in use
     width: 100%;
     z-index: 4;
-
     margin: 0vw 0vw 0 0.5vw;
-
     background-color: #ffffff;
     height: 1%;
-    // border: 1px solid #000; /* Set border color and style */
-    // grid-row: 12;
-    // grid-column: 4/24;
   }
+  // title line
   .title-line {
     grid-row: 19;
     grid-column: 12/20;
@@ -185,17 +186,17 @@
     margin-top: 3.5vh;
     background-color: #ffffff;
   }
+// image section
   .image-section {
     grid-row: 3/15;
     grid-column: 11/22;
     width: 85%;
     height: 75%;
-
-    // margin-left: 0.8vw;
     z-index: 2;
     border: 1px white solid;
     border-radius: 30px 0 30px 0;
   }
+  // project specfications
   .proj-specs {
     grid-row: 12/15;
     grid-column: 11/19;
@@ -206,16 +207,17 @@
     font-weight: 900;
     z-index: 5;
   }
+  // spec individual
   #spec {
-    // border: 2px solid #000000;
     color: rgb(255, 255, 255);
-    display: inline-block; /* or use 'display: inline;' */
+    display: inline-block;
     margin: 0.3vw;
     padding: 0.8vw;
     border: 1px white solid;
     border-radius: 25px;
     z-index: 5;
   }
+  // spec title
   #spec-title {
     grid-row: 18/19;
     grid-column: 18/20;
@@ -226,10 +228,10 @@
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
     color: rgb(255, 255, 255);
-
     text-align: right;
     justify-content: flex-end;
   }
+  // spec lines
   #spec-line {
     grid-row: 8/19;
     grid-column: 29;
@@ -237,12 +239,11 @@
     width: 1%;
     height: 100%;
   }
-
+// number for section
   .number {
     grid-row: 20;
     grid-column: 28;
     color: white;
-
     font-size: 1.1vw;
     margin: 1vh 0 0 0;
     display: flex;
@@ -252,22 +253,24 @@
     place-items: end;
   }
 }
-
-@media (max-width: 480px) {
+// smaller screens
+@media (max-width: 840px) {
+  // prject section
   .prj {
     height: 100%;
     width: 100%;
-    // border: 1px red solid;
+    // main body
     .prj-main-body {
       grid-row: 4/21;
       grid-column: 4/36;
-      // border-radius: 10px;
     }
+    // border main
     .prj-main-border {
       grid-row: 3/22;
       grid-column: 5/36;
       display: none;
     }
+    // image section
     .image-section {
       grid-row: 4/12;
       grid-column: 4/36;
@@ -275,35 +278,41 @@
       height: 100%;
       width: 100%;
     }
+    // view section
     .prj-view-title {
       grid-row: 12/15;
       grid-column: 19/34;
-      font-size: 50px;
+      font-size: 20px;
+    // view cross
       .cross {
-        height: 30px;
+        height: 20px;
         width: auto;
         margin-left: 5px;
       }
     }
+    // spec
     #spec {
       display: none;
     }
+    // spec title
     #spec-title {
       display: none;
     }
+    // title
     .title {
       grid-row: 16/20;
-      grid-column: 7/12;
-      font-size: 30px;
+      grid-column: 7/21;
+      font-size: 20px;
       align-items: end;
       text-align: left;
       font-family: Arial, Helvetica, sans-serif;
     }
+    // added stroke changes
     #stroke {
       -webkit-text-stroke: #ffffff;
       color: #ffffff;
     }
-
+// project container
     #project-start {
       width: 150vw;
       height: 100vh;
@@ -311,46 +320,60 @@
         to right,
         rgba(255, 255, 255, 0),
         white 20%
-      ); /* Change the linear gradient on hover to fully white */
+      );
     }
+    // info
     .info {
       display: none;
     }
+    // start
     .start {
       display: none;
     }
+    // number section
     .number {
       font-size: 20px;
       grid-column: 19/34;
       margin-right: 3vw;
       grid-row: 19;
     }
+    // spec line
     #spec-line {
       display: none;
     }
+    // title line
     .title-line {
       display: none;
     }
   }
+  // start button
   #press-start {
-    top: 60%;
-    left: 31%;
-    right: 33%;
-    bottom: 40%;
+    padding: 1.5vw;
+    font-size: 15px;
+    border: none;
     text-align: center;
   }
+  // start button hover
+  #press-start:hover {
+    border: none;
+  }
+// view button
   .prj-view-title {
     font-size: 20px;
     font-size: 0.5vw;
+    margin-right: -3vw;
   }
+
   #view-site {
     margin: 3vw;
-    font-size: 30px;
+    font-size: 20px;
+    // cross
     .cross {
       height: 15%;
       width: auto;
     }
   }
+  // last button for next section
   #project-last {
     width: 100vw;
     display: flex;
@@ -359,11 +382,14 @@
     font-size: 60px;
     color: rgba(0, 0, 0, 0.304);
     padding: 0 20vw 0 20vw;
-
-    // border: 1px solid black;
-    // border-radius: 30%;
   }
+  // next button
   #next {
     color: black;
+    font-size: 40px;
+  }
+  // section for next button
+  #section-start {
+    margin: 200px;
   }
 }

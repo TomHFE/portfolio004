@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
 
+// banner
 .banner {
   width: 100vw;
   height: 100vh;
@@ -12,8 +13,7 @@
   -webkit-text-stroke-width: 0.5px;
 }
 
-#blur {
-}
+// h1 elements
 h1 {
   font-family: "Audiowide", sans-serif;
   font-size: 180px;
@@ -25,18 +25,22 @@ h1 {
   // border: 1px rgb(0, 0, 0) solid;
   color: rgba(255, 255, 255, 0);
 }
+// horizontal line main
 .horizontal-line-main {
   border-bottom: 1px solid #000000;
   width: 100vw;
 }
+// first line
 .first {
   grid-column: 1/21;
   grid-row: 1;
 }
+// second line
 .second {
   grid-column: 1/21;
   grid-row: 19;
 }
+// menu
 .menu {
   font-family: Arial, Helvetica, sans-serif;
   grid-column: 20/21;
@@ -47,6 +51,7 @@ h1 {
   margin-left: 0vh;
   color: white;
 }
+// header
 .portfolio-004 {
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 50;
@@ -57,6 +62,7 @@ h1 {
   text-align: right;
   color: rgb(0, 0, 0);
 }
+// time
 .time {
   font-family: Arial, Helvetica, sans-serif;
   color: rgb(0, 0, 0);
@@ -67,36 +73,40 @@ h1 {
   margin-top: 0.75vh;
   margin-left: 1vh;
 }
-
-@media (max-width: 480px) {
+// smaller screens
+@media (max-width: 840px) {
+  // banner
   .banner {
     display: grid;
     grid-template-columns: repeat(20, 1fr);
     grid-template-rows: repeat(20, 1fr);
   }
+  // h1 elements
   h1 {
     font-size: 60px;
     grid-column: 1/21;
     text-align: center;
   }
+  // time elements
   .time {
     grid-column: 5/21;
     margin: 10px;
     grid-row: 1;
     text-align: right;
   }
+  // header elements
   .portfolio-004 {
     text-align: right;
     grid-column: 13/21;
     margin: 10px;
     display: none;
   }
-  .horizontal-line {
-  }
+// first line
   .first {
     grid-column: 1/21;
     grid-row: 1;
   }
+  // second line
   .second {
     grid-column: 1/21;
     grid-row: 19;

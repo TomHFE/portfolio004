@@ -1,5 +1,6 @@
-import React from "react";
 import { usePreventScroll } from "@react-aria/overlays";
+
+// prevent scroll hook
 
 export default function Scroll() {
   usePreventScroll({

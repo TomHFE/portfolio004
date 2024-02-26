@@ -1,3 +1,5 @@
+// shader for future use
+
 const HoverShader = {
   vertex: `
     varying vec2 vUv;

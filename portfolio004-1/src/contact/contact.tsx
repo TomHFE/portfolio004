@@ -1,7 +1,7 @@
-import React from "react";
 import Email from "./email";
 import "./contact.scss";
 
+// interface for props
 interface ContactOption {
   name: string;
   link: string;
@@ -9,7 +9,7 @@ interface ContactOption {
 }
 
 export default function Contact() {
-  console.log(Email());
+  // contact options
   const contactOptions: ContactOption[] = [
     {
       name: "Github",
@@ -23,19 +23,13 @@ export default function Contact() {
     },
   ];
 
-  //   <Link
-  //   to={
-  //     array[2].name !== "CONTACT"
-  //       ? `/${array[2].name.toLowerCase()}`
-  //       : EmailLink()
-  //   }
-  //   className="linkStyling"
-  // >
+  //  dom
   return (
     <div className="contact-body">
       <div className="contact-container" id="contact-container">
         <h1>CONTACT</h1>
         <div id="contacts">
+          {/* mapping contact options to dom */}
           {contactOptions.map((contact, i) => (
             <div key={contact.name + i} className="section">
               <a rel="noopener noreferrer" target="_blank" href={contact.link}>
@@ -43,6 +37,7 @@ export default function Contact() {
               </a>
             </div>
           ))}
+          {/* email function */}
           <a rel="noopener noreferrer" target="_blank" href={Email()}>
             Email
           </a>

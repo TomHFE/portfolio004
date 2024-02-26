@@ -1,3 +1,5 @@
+// email function; sends client to their email with fields filled out
+
 function Email() {
   // my email
   const recipientEmail = "tomengland1995@gmail.com";

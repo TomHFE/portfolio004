@@ -1,6 +1,8 @@
 import { Vector2 } from "three";
 
 // ../node_modules/three/examples/jsm/shaders/DotScreenShader.js
+
+// custom pass shader class
 const CustomPass = {
   name: "CustomPass",
   uniforms: {
@@ -13,7 +15,7 @@ const CustomPass = {
     scale: { value: 1 },
   },
   vertexShader:
-    /* glsl */
+    /* vertex */
     `
 	
 	varying vec2 vUv;
@@ -25,8 +27,9 @@ const CustomPass = {
 		
 	}`,
   fragmentShader:
-    /* glsl */
+    /* fragment */
     `
+	// uniforms
 	
 	uniform vec2 center;
 	uniform float angle;
@@ -80,6 +83,8 @@ const CustomPass = {
 		}`,
 };
 export { CustomPass };
+
+// alternative shader for future changes
 
 // import { Vector2, Shader } from "three";
 

@@ -1,3 +1,5 @@
+// project data props
+
 interface ProjectData {
   id: number;
   title: string;
@@ -9,12 +11,16 @@ interface ProjectData {
   link: string;
 }
 
+// class constructor for project data instance
 const Data: ProjectData[] = [];
+// incremental counter
 let counter = 0;
 
 class Project {
   // Constructor
+  // id
   id = counter++;
+  // props
   title: string;
   number: string;
   name: string;
@@ -31,6 +37,7 @@ class Project {
     specs: string[],
     link: string
   ) {
+    // linking to relevant fields
     this.title = title;
     this.number = number;
     this.name = name;
@@ -40,7 +47,7 @@ class Project {
     this.link = link;
   }
 }
-
+// first instance
 const P1 = new Project(
   "movieApp",
   "5",
@@ -53,6 +60,8 @@ const P1 = new Project(
   ["React", "Javascript", "Framer Motion", "CSS", "HTML"],
   "https://github.com/TomHFE/movie-app"
 );
+// second instance
+
 const P2 = new Project(
   "cssCv",
   "4",
@@ -65,6 +74,8 @@ const P2 = new Project(
   ["React", "Javascript", "CSS", "HTML"],
   "https://github.com/TomHFE/CV-react"
 );
+// third instance
+
 const P3 = new Project(
   "hyperionProjects",
   "3",
@@ -77,6 +88,8 @@ const P3 = new Project(
   ["React", "Javascript", "Framer Motion", "CSS", "HTML", "Redux", "Python"],
   "https://www.hyperiondev.com/portfolio/104617/"
 );
+// fourth instance
+
 const P4 = new Project(
   "hyperionFinalProject",
   "2",
@@ -89,6 +102,8 @@ const P4 = new Project(
   ["React", "Javascript", "Framer Motion", "CSS", "HTML", "Redux"],
   "https://github.com/TomHFE/hangman-app"
 );
+// fifth instance
+
 const P5 = new Project(
   "previousWebsite",
   "1",
@@ -109,6 +124,8 @@ const P5 = new Project(
   ],
   "https://github.com/TomHFE/new-site"
 );
+// sixth instance
+
 const P6 = new Project(
   "newWebsite",
   "0",
@@ -131,7 +148,7 @@ const P6 = new Project(
   ],
   "tom-webdev.co.uk"
 );
-
+// Data array
 Data.push(P1, P2, P3, P4, P5, P6);
 
 export default Data;
