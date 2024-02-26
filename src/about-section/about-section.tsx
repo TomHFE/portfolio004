@@ -16,7 +16,7 @@ export default function AboutSection() {
       document.body.style.overflow = "";
       document.documentElement.style.overflow = "";
       document.body.style.scrollBehavior = "";
-    }, 3000);
+    }, 1000);
     return () => {
       // clear timer
       clearTimeout(timer);
