@@ -31,12 +31,9 @@ const CustomPass = {
     `
 	// uniforms
 	
-	uniform vec2 center;
-	uniform float angle;
 	uniform float scale;
 	uniform float time;
 	uniform float progress;
-	uniform vec2 tSize;
 	
 		uniform sampler2D tDiffuse;
 
@@ -73,59 +70,3 @@ const CustomPass = {
 		}`,
 };
 export { CustomPass };
-
-// alternative shader for future changes
-
-// import { Vector2, Shader } from "three";
-
-// // interface CustomPassUniforms {
-// //   tDiffuse: { value: any }; // Adjust the type based on your texture type
-// //   tSize: { value: Vector2 };
-// //   center: { value: Vector2 };
-// //   angle: { value: number };
-// //   scale: { value: number };
-// // }
-
-// const CustomPass: Shader = {
-//   name: "CustomPass",
-//   uniforms: {
-//     tDiffuse: { value: null },
-//     tSize: { value: new Vector2(256, 256) },
-//     center: { value: new Vector2(0.5, 0.5) },
-//     angle: { value: 1.57 },
-//     scale: { value: 1 },
-//   },
-//   vertexShader: `
-//     varying vec2 vUv;
-
-//     void main() {
-//       vUv = uv;
-//       gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
-//     }
-//   `,
-//   fragmentShader: `
-//     uniform vec2 center;
-//     uniform float angle;
-//     uniform float scale;
-//     uniform vec2 tSize;
-
-//     uniform sampler2D tDiffuse;
-
-//     varying vec2 vUv;
-
-//     float pattern() {
-//       float s = sin( angle ), c = cos( angle );
-//       vec2 tex = vUv * tSize - center;
-//       vec2 point = vec2( c * tex.x - s * tex.y, s * tex.x + c * tex.y ) * scale;
-//       return ( sin( point.x ) * sin( point.y ) ) * 4.0;
-//     }
-
-//     void main() {
-//       vec4 color = texture2D( tDiffuse, vUv );
-//       float average = ( color.r + color.g + color.b ) / 3.0;
-//       gl_FragColor = vec4( vec3( average * 10.0 - 5.0 + pattern() ), color.a );
-//     }
-//   `,
-// };
-
-// export { CustomPass, CustomPassUniforms };
