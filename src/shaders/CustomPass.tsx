@@ -42,16 +42,6 @@ const CustomPass = {
 
 		varying vec2 vUv;
 		
-		float pattern() {
-			
-			float s = sin( angle ), c = cos( angle );
-			
-			vec2 tex = vUv * tSize - center;
-			vec2 point = vec2( c * tex.x - s * tex.y, s * tex.x + c * tex.y ) * scale;
-			
-			return ( sin( point.x ) * sin( point.y ) ) * 4.0;
-			
-		}
 		
 		void main() {
 			
