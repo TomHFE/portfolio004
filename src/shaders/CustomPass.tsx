@@ -41,8 +41,6 @@ const CustomPass = {
 		
 		
 		void main() {
-			
-		
 
 			vec2 newUV = vUv;
 
